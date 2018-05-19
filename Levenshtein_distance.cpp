@@ -1,3 +1,7 @@
+#include <vector>
+#include <string>
+#include <algorithm>
+
 unsigned Levenshtein_distance(const std::string &string1, const std::string &string2)
 {
 	std::vector<unsigned> current_level(string1.size() + 1);
