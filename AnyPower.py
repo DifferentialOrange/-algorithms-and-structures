@@ -37,8 +37,9 @@ def PrimeDiv(n):
 				n = n // v
 	return prime_mult
 
-def AnyPower(n):
-	# Return 'YES' if it is a power of some number, 'NO' instead.
+def AnyPower(n, GetPowerForm=False):
+	# Returns 'YES' if it is a power of some number, 'NO' instead.
+	# If GetPowerForm set true, returns powered form (string).
 	if n <= 1:
 		raise ValueError
 
@@ -55,4 +56,11 @@ def AnyPower(n):
 		if v % min_count > 0:
 			return 'NO'
 
-	return 'YES'
+	if GetPowerForm:
+		original_number = 1
+		for k, v in prime_count.items():
+			original_number *= k ** (v // min_count)
+
+		return f'{original_number}^{min_count}'
+	else:
+		return 'YES'
